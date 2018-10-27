@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+	public int health;
     private Rigidbody rb;
     private Transform camTransform;
 
@@ -42,7 +43,14 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
     }
-    private Vector3 RotateWithView()
+
+	private void OnCollisionEnter(Collision other) {
+		if (other.gameObject.CompareTag("Wall")) {
+			health -= 5;
+		}
+	}
+
+	private Vector3 RotateWithView()
     {
         if(camTransform != null)
         {
