@@ -22,6 +22,8 @@ public class Sword : MonoBehaviour {
 			print("Enemy Collided");
 			other.transform.root.gameObject.GetComponent<Animator>().enabled = false;
 		}
-
+		else if(other.transform.root.gameObject.CompareTag("Wall")){
+			this.transform.root.gameObject.GetComponent<PlayerController>().health-=5;
+		}
 	}
 }
