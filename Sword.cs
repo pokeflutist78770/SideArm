@@ -45,23 +45,17 @@ public class Sword : MonoBehaviour {
 
 			other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3((velocity.x*5), 10, (velocity.z*5)), ForceMode.Impulse);
 
-			//this.transform.root.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1, 0), ForceMode.VelocityChange);
-			/*
-			Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
-			foreach (Collider hit in colliders) {
-				print(hit.gameObject.tag);
-				
-				Rigidbody rb = hit.GetComponent<Rigidbody>();
-
-				if (rb != null && rb.gameObject.tag!="Player")
-					rb.AddExplosionForce(power, explosionPos, radius, 200.0F);
-				
-			}
-			*/
+			//OOF
+			//OOF
+			other.transform.root.gameObject.GetComponent<AudioSource>().Play();
 		}
+		//drecrement health
 		else if (other.gameObject.CompareTag("Wall")) {
 			this.transform.root.gameObject.GetComponent<PlayerController>().health -= 5;
 
+		}
+		else if (other.gameObject.CompareTag("Floor")) {
+			//other.transform.root.gameObject.GetComponent<AudioSource>().Play();
 		}
 
 	}
